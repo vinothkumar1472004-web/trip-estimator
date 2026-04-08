@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Login - Travel Planner</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:'Poppins',sans-serif;
+background:linear-gradient(120deg,#e0f2fe,#f0fdfa);
+min-height:100vh;
+}
+
+/* NAVBAR */
+
+.navbar{
+background:linear-gradient(90deg,#0ea5e9,#2563eb);
+box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+.navbar-brand{
+font-weight:700;
+color:white !important;
+}
+
+.navbar-nav .nav-link{
+color:white !important;
+margin-left:20px;
+font-weight:500;
+}
+
+
+/* LOGIN CARD */
+
+.login-container{
+height:90vh;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.login-card{
+background:white;
+border-radius:15px;
+padding:40px;
+width:380px;
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
+text-align:center;
+}
+
+.login-card h4{
+font-weight:600;
+margin-bottom:25px;
+}
+
+.input-group-text{
+background:#0ea5e9;
+color:white;
+border:none;
+}
+
+.form-control{
+border-radius:0 8px 8px 0;
+}
+
+/* BUTTON */
+
+.btn-login{
+background:linear-gradient(90deg,#0ea5e9,#2563eb);
+border:none;
+color:white;
+font-weight:500;
+padding:10px;
+border-radius:8px;
+transition:0.3s;
+}
+
+.btn-login:hover{
+transform:translateY(-2px);
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ICON */
+
+.login-icon{
+font-size:50px;
+color:#0ea5e9;
+margin-bottom:10px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg">
+
+<div class="container">
+
+<a class="navbar-brand">
+<i class="fas fa-plane-departure"></i> Smart Travel
+</a>
+
+<div class="collapse navbar-collapse">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="/">Home</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="/user_login">Traveler</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="/admin_login">Admin</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="/register">Register</a>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</nav>
+
+
+
+<!-- LOGIN SECTION -->
+
+<div class="login-container">
+
+<div class="login-card">
+
+<div class="login-icon">
+<i class="fas fa-user-shield"></i>
+</div>
+
+<h4>Admin Login</h4>
+
+<form method="POST" action="/admin_login">
+
+<div class="input-group mb-3">
+
+<span class="input-group-text">
+<i class="fas fa-user"></i>
+</span>
+
+<input type="text" class="form-control" name="username" placeholder="Admin Username" required>
+
+</div>
+
+
+<div class="input-group mb-4">
+
+<span class="input-group-text">
+<i class="fas fa-lock"></i>
+</span>
+
+<input type="password" class="form-control" name="password" placeholder="Password" required>
+
+</div>
+
+<button class="btn btn-login w-100">
+<i class="fas fa-sign-in-alt"></i> Login
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+
+</body>
+</html> 

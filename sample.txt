@@ -1,0 +1,9 @@
+Trip cost estimater -vinoth kumar
+
+Updates:
+Update, no need of cost calculation separately.
+User needs to input:
+From place and To place . Then from, to date. Select the budget type as low, high, moderate. And the mode of transport of public- bus, train, flight or select private needs drop-down as bike, car, traveller. No. Of person travel
+And generate cost, the ai must tell as per the budget what places can be visited, eg. If to place ooty, and budget low suggest places as per the low budget plans. And for cost prediction an invoice must be generated. As, travel cost including from,to. Then food cost, stay cost, for places to visit the entry ticket for it.
+
+

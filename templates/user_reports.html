@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>User Reports - Travelia</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:'Poppins',sans-serif;
+background:#f1f5f9;
+}
+
+
+/* NAVBAR */
+
+.navbar{
+background:linear-gradient(90deg,#0ea5e9,#2563eb);
+box-shadow:0 6px 20px rgba(0,0,0,0.15);
+}
+
+.navbar-brand{
+font-weight:700;
+font-size:22px;
+color:white !important;
+}
+
+.nav-link{
+color:white !important;
+margin-left:20px;
+font-weight:500;
+}
+
+
+/* PAGE HEADER */
+
+.page-header{
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+margin-bottom:30px;
+}
+
+.page-header h3{
+font-weight:600;
+}
+
+
+/* REPORT CARDS */
+
+.report-card{
+background:white;
+border-radius:14px;
+padding:25px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+margin-bottom:30px;
+}
+
+.report-title{
+font-weight:600;
+margin-bottom:20px;
+}
+
+
+/* TABLE */
+
+.table{
+margin-bottom:0;
+}
+
+.table thead{
+background:#2563eb;
+color:white;
+}
+
+.table tbody tr:hover{
+background:#f8fafc;
+}
+
+
+/* BADGES */
+
+.badge-cost{
+background:#22c55e;
+}
+
+.badge-destination{
+background:#f59e0b;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar navbar-expand-lg">
+
+<div class="container">
+
+<a class="navbar-brand" href="/user_home">
+<i class="fas fa-plane-departure"></i> Travelia
+</a>
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a class="nav-link" href="/user_home">
+<i class="fas fa-home"></i> Home
+</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="/user_reports">
+<i class="fas fa-chart-line"></i> Reports
+</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="/logout">
+<i class="fas fa-sign-out-alt"></i> Logout
+</a>
+</li>
+
+</ul>
+
+</div>
+
+</nav>
+
+
+
+<div class="container mt-4">
+
+<!-- PAGE HEADER -->
+
+<div class="page-header">
+
+<h3>
+<i class="fas fa-chart-bar"></i>
+Your Prediction Reports
+</h3>
+
+<p class="text-muted">
+View your recent travel cost predictions and destination recommendations.
+</p>
+
+</div>
+
+
+
+<!-- COST PREDICTION REPORT -->
+
+<div class="report-card">
+
+<h5 class="report-title">
+
+<i class="fas fa-coins text-primary"></i>
+Travel Cost Predictions
+
+</h5>
+
+<div class="table-responsive">
+
+<table class="table table-bordered">
+
+<thead>
+
+<tr>
+<th>ID</th>
+<th>Distance</th>
+<th>Days</th>
+<th>Travel Mode</th>
+<th>Hotel Type</th>
+<th>Predicted Cost</th>
+<th>Date</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for r in cost_reports %}
+
+<tr>
+
+<td>{{loop.index}}</td>
+
+<td>{{r.distance_km}} km</td>
+
+<td>{{r.days}}</td>
+
+<td>{{r.travel_mode}}</td>
+
+<td>{{r.hotel_type}}</td>
+
+<td>
+<span class="badge badge-cost">
+₹ {{r.predicted_cost}}
+</span>
+</td>
+
+<td>{{r.created_at}}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+
+<!-- DESTINATION REPORT -->
+
+<div class="report-card">
+
+<h5 class="report-title">
+
+<i class="fas fa-map-location-dot text-warning"></i>
+Destination Recommendations
+
+</h5>
+
+<div class="table-responsive">
+
+<table class="table table-bordered">
+
+<thead>
+
+<tr>
+<th>ID</th>
+<th>Category</th>
+<th>Budget</th>
+<th>Season</th>
+<th>Recommended Place</th>
+<th>State</th>
+<th>Date</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for r in destination_reports %}
+
+<tr>
+
+<td>{{loop.index}}</td>
+
+<td>{{r.category}}</td>
+
+<td>{{r.budget_type}}</td>
+
+<td>{{r.season}}</td>
+
+<td>
+
+<span class="badge badge-destination">
+
+{{r.spot_name}}
+
+</span>
+
+</td>
+
+<td>{{r.state}}</td>
+
+<td>{{r.created_at}}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- TRIP PLAN REPORT -->
+
+<div class="report-card">
+
+<h5 class="report-title">
+<i class="fas fa-route text-success"></i>
+Trip Plans
+</h5>
+
+<div class="table-responsive">
+
+<table class="table table-bordered">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>From</th>
+<th>To</th>
+<th>Days</th>
+<th>Persons</th>
+<th>Budget</th>
+<th>Transport</th>
+<th>Total Cost</th>
+<th>Date</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for r in trip_reports %}
+
+<tr>
+
+<td>{{loop.index}}</td>
+<td>{{r.from_place}}</td>
+<td>{{r.to_place}}</td>
+<td>{{r.days}}</td>
+<td>{{r.persons}}</td>
+
+<td>
+<span class="badge bg-info text-dark">
+{{r.budget}}
+</span>
+</td>
+
+<td>{{r.transport_mode}}</td>
+
+<td>
+<span class="badge bg-success">
+₹ {{r.total_cost}}
+</span>
+</td>
+
+<td>{{r.created_at}}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
